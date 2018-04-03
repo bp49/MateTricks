@@ -12,6 +12,7 @@ namespace MateTricks.Controllers
     {
         public IActionResult Index()
         {
+            
             return View();
         }
 
@@ -32,6 +33,11 @@ namespace MateTricks.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        public IActionResult TestPage()
+        {
+
+            return View(new string[2] { "Value1", "Value2" });
         }
     }
 }
