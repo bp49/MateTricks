@@ -128,7 +128,7 @@ module.exports = ""
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<app-nav></app-nav>\n<body class=\"text-center\">\r\n  <router-outlet></router-outlet>\r\n</body>\r\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\r\n<app-nav></app-nav>\r\n<body class=\"text-center\">\r\n  <router-outlet></router-outlet>\r\n</body>\r\n"
 
 /***/ }),
 
@@ -303,7 +303,7 @@ module.exports = ""
 /***/ "./src/app/nav/nav.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\r\n  <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n    <a class=\"navbar-brand\" href=\"#\">The Matrix</a>\r\n    <button (click)=\"isCollapsed = !isCollapsed\" class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\" [collapse]=\"isCollapsed\">\r\n      <ul class=\"navbar-nav mr-auto\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" router-link=\"/Home\">Home <span class=\"sr-only\">(current)</span></a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Matches</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Friends List</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Messages</a>\r\n        </li>\r\n      </ul>\r\n      <form *ngIf=\"!VerifyLogin()\" #LoginForm=\"ngForm\" class=\"form-inline my-2 my-lg-0\" (ngSubmit)=\"login()\">\r\n        <input name=\"userName\" class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"UserName\" [(ngModel)]=\"model.userName\" />\r\n        <input name=\"password\" class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\" [(ngModel)]=\"model.password\" />\r\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!LoginForm.valid\">Sign in</button>\r\n      </form>\r\n      <form *ngIf=\"VerifyLogin()\" #LoginForm=\"ngForm\" class=\"btn-group\" dropdown>\r\n        <button dropdownToggle type=\"button\" class=\"btn btn-primary dropdown-toggle\">\r\n         Welcome User <span class=\"caret\"></span>\r\n        </button>\r\n        <ul *dropdownMenu class=\"dropdown-menu\" role=\"menu\">\r\n          <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Edit profile</a></li>\r\n          <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\" (click)=\"logout()\">Logout</a></li>\r\n          <li class=\"divider dropdown-divider\"></li>\r\n          <li role=\"menuitem\">\r\n            <a class=\"dropdown-item\" href=\"#\">Separated link</a>\r\n          </li>\r\n        </ul>\r\n      </form>\r\n    </div>\r\n  </nav>\r\n"
+module.exports = "\r\n  <nav class=\"navbar navbar-expand-lg navbar-dark bg-dark\">\r\n    <a class=\"navbar-brand\" href=\"#\">The Matrix</a>\r\n    <button (click)=\"isCollapsed = !isCollapsed\" class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarsExampleDefault\" aria-controls=\"navbarsExampleDefault\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\r\n      <span class=\"navbar-toggler-icon\"></span>\r\n    </button>\r\n\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarsExampleDefault\" [collapse]=\"isCollapsed\">\r\n      <ul class=\"navbar-nav mr-auto\">\r\n        <li class=\"nav-item active\">\r\n          <a class=\"nav-link\" router-link=\"/Home\">Home <span class=\"sr-only\">(current)</span></a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Matches</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Friends List</a>\r\n        </li>\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">Messages</a>\r\n        </li>\r\n      </ul>\r\n      <form *ngIf=\"VerifyLogin()\" #LoginForm=\"ngForm\" class=\"form-inline my-2 my-lg-0\" (ngSubmit)=\"login()\">\r\n        <input name=\"userName\" class=\"form-control mr-sm-2\" type=\"text\" placeholder=\"UserName\" [(ngModel)]=\"model.userName\" />\r\n        <input name=\"password\" class=\"form-control mr-sm-2\" type=\"password\" placeholder=\"Password\" [(ngModel)]=\"model.password\" />\r\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\" [disabled]=\"!LoginForm.valid\">Sign in</button>\r\n      </form>\r\n      <div *ngIf=\"!VerifyLogin()\" class=\"btn-group\" dropdown>\r\n        <button dropdownToggle type=\"button\" class=\"btn btn-primary dropdown-toggle\">\r\n         Welcome User <span class=\"caret\"></span>\r\n        </button>\r\n        <ul *dropdownMenu class=\"dropdown-menu\" role=\"menu\">\r\n          <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\">Edit profile</a></li>\r\n          <li role=\"menuitem\"><a class=\"dropdown-item\" href=\"#\" (click)=\"logout()\">Logout</a></li>\r\n          <li class=\"divider dropdown-divider\"></li>\r\n          <li role=\"menuitem\">\r\n            <a class=\"dropdown-item\" href=\"#\">Separated link</a>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n"
 
 /***/ }),
 
@@ -326,6 +326,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var NavComponent = /** @class */ (function () {
+    //User = console.log(JSON.parse(localStorage.getItem('user')));
     function NavComponent(AuthService) {
         this.AuthService = AuthService;
         this.model = {};
@@ -336,15 +337,15 @@ var NavComponent = /** @class */ (function () {
     NavComponent.prototype.login = function () {
         console.log(this.model);
         this.AuthService.login(this.model).subscribe(function (data) { return console.log(data); }, function (error) { return console.log(error); });
-        //console.log(JSON.parse(localStorage.getItem('user')));
         //console.log(localStorage.getItem('user'));
         //console.log(localStorage.getitem('token'));
+        return this.VerifyLogin();
     };
     NavComponent.prototype.logout = function () {
         this.AuthService.LogOut();
     };
     NavComponent.prototype.VerifyLogin = function () {
-        this.AuthService.IsExpired();
+        return this.AuthService.IsExpired();
     };
     NavComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({

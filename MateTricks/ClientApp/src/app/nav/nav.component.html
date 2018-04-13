@@ -20,12 +20,12 @@
           <a class="nav-link" href="#">Messages</a>
         </li>
       </ul>
-      <form *ngIf="!VerifyLogin()" #LoginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+      <form *ngIf="VerifyLogin()" #LoginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
         <input name="userName" class="form-control mr-sm-2" type="text" placeholder="UserName" [(ngModel)]="model.userName" />
         <input name="password" class="form-control mr-sm-2" type="password" placeholder="Password" [(ngModel)]="model.password" />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!LoginForm.valid">Sign in</button>
       </form>
-      <form *ngIf="VerifyLogin()" #LoginForm="ngForm" class="btn-group" dropdown>
+      <div *ngIf="!VerifyLogin()" class="btn-group" dropdown>
         <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
          Welcome User <span class="caret"></span>
         </button>
@@ -37,6 +37,6 @@
             <a class="dropdown-item" href="#">Separated link</a>
           </li>
         </ul>
-      </form>
+      </div>
     </div>
   </nav>
