@@ -59,6 +59,7 @@ namespace MateTricks
                 app.UseExceptionHandler("/Home/Error");
             }
 
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseAuthentication();
 
