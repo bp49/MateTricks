@@ -11,7 +11,8 @@ export class NavComponent implements OnInit {
   
   model = {};
   isCollapsed = false;
-  //User = console.log(JSON.parse(localStorage.getItem('user')));
+  //User = JSON.parse(localStorage.getItem('user')).userName
+  
   constructor(public AuthService: AuthService) { }
 
   ngOnInit() {

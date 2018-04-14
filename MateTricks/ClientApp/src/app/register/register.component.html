@@ -3,11 +3,13 @@
 
   <form #RegisterForm="ngForm" class="form-control" (ngSubmit)="register()">
     <h2 class="h3 mb-3 font-weight-normal">Sign Up</h2>
-        <input name ="userName"class="form-control mr-sm-2" type="text" placeholder="UserName" [(ngModel)]="model.userName"/>
-        <input name="password" class="form-control mr-sm-2" type="password" placeholder="Password" [(ngModel)]="model.password"/>
-        <!--<input name="passwordConfirm" class="form-control mr-sm-2" type="password" placeholder="Confirm Password" [(ngModel)]="model.passwordConfirm" />-->
+        <input name ="userName"class="form-control mr-sm-2" type="text" placeholder="UserName" [(ngModel)]="model.userName" required/>
+        <input name="password" class="form-control mr-sm-2" type="password" placeholder="Password" [(ngModel)]="model.password" required/>
+        <input name="passwordConfirm" class="form-control mr-sm-2" type="password" placeholder="Confirm Password" [(ngModel)]="PasswordConfirmation.passwordConfirm" required/>
+    <alert *ngIf="!PassVerify()" class="alert alert-danger">Passwords Do not Match!</alert>
     <button class="btn btn-primary btn-block" type="submit" [disabled]="!RegisterForm.valid">Register</button>
     <button class="btn btn-danger btn-block" routerLink="/Home">Cancel</button>
+    <alert *ngIf="AccountCreation()"class="alert alert-success" [dismissOnTimeout]="5000">You Have successfully registered with the Matrix!</alert>
     <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
   </form>
 </body>

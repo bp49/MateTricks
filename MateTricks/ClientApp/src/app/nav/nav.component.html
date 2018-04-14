@@ -21,13 +21,13 @@
         </li>
       </ul>
       <form *ngIf="VerifyLogin()" #LoginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
-        <input name="userName" class="form-control mr-sm-2" type="text" placeholder="UserName" [(ngModel)]="model.userName" />
-        <input name="password" class="form-control mr-sm-2" type="password" placeholder="Password" [(ngModel)]="model.password" />
+        <input name="userName" class="form-control mr-sm-2" type="text" placeholder="UserName" [(ngModel)]="model.userName" required/>
+        <input name="password" class="form-control mr-sm-2" type="password" placeholder="Password" [(ngModel)]="model.password" required/>
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!LoginForm.valid">Sign in</button>
       </form>
       <div *ngIf="!VerifyLogin()" class="btn-group" dropdown>
         <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
-         Welcome User <span class="caret"></span>
+         Welcome User! <span class="caret"></span>
         </button>
         <ul *dropdownMenu class="dropdown-menu" role="menu">
           <li role="menuitem"><a class="dropdown-item" href="#">Edit profile</a></li>
