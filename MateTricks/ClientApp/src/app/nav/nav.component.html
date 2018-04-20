@@ -7,17 +7,17 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault" [collapse]="isCollapsed">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" router-link="/Home">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/Home">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Matches</a>
+          <a class="nav-link" routerLink="/members">Members</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Friends List</a>
+          <a class="nav-link" routerLink="/friends">Friends List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Messages</a>
+          <a class="nav-link" routerLink="/messages">Messages</a>
         </li>
       </ul>
       <form *ngIf="VerifyLogin()" #LoginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">

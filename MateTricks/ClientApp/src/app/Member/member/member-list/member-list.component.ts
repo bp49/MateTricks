@@ -1,0 +1,20 @@
+import { Component, OnInit } from '@angular/core';
+import { UserServiceService } from '../../../Services/user-service.service';
+
+@Component({
+  selector: 'app-member-list',
+  templateUrl: './member-list.component.html',
+  styleUrls: ['./member-list.component.css']
+})
+export class MemberListComponent implements OnInit {
+
+  constructor(private UserService: UserServiceService) { }
+
+  users = [];
+  ngOnInit() {
+    this.GetUsers();
+  }
+  GetUsers() {
+    this.UserService.RetrieveUsers().subscribe(p => this.users = p);
+  }
+}

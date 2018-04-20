@@ -3,16 +3,17 @@ import { AuthUser } from '../Models/auth-user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 
 export class AuthService {
 
-  baseUrl = 'http://mvcmovie20180227111318number6.azurewebsites.net/api/auth/'; 
+  baseUrl = environment.apiUrl; 
   constructor(private http: HttpClient, private JwtHelperService: JwtHelperService) { }
   
   login(user) {
-    return this.http.post<AuthUser>(this.baseUrl + 'login', user)
+    return this.http.post<AuthUser>(this.baseUrl + '/auth/login', user)
       .map((result: AuthUser) => {
         if (result) {
           localStorage.setItem('token', result.tokenString);
@@ -24,7 +25,7 @@ export class AuthService {
   }
 
   Register(model) {
-    return this.http.post<AuthUser>(this.baseUrl + 'register', model);
+    return this.http.post<AuthUser>(this.baseUrl + '/auth/register', model);
   }
 
   IsExpired() {
