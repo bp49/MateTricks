@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="text.left"><strong>Members!</strong></h1>
-  <div class="row md-3">
-    <div class="col-auto">
+  <div *ngIf="users"class="row md-3">
+    <div *ngFor="let user of users"class="col-auto">
       <app-member-card [member]="user"></app-member-card>
     </div>
   </div>

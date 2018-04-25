@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserDTO } from '../../Models/userDTO';
+import { UserDTO } from '../../Models/UserDTO';
 
 @Component({
   selector: 'app-member-card',
@@ -9,6 +9,7 @@ import { UserDTO } from '../../Models/userDTO';
 export class MemberCardComponent implements OnInit {
 
   @Input() member: UserDTO;
+
   constructor() { }
 
   ngOnInit() {

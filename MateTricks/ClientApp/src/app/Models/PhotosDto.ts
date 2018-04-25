@@ -1,7 +1,7 @@
 export interface PhotosDto
 {
   id: number;
-  url: string;
+  Url: string;
   description: string;
   dateAdded: Date;
   isProfilePic: boolean;

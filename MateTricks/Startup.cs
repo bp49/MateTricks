@@ -65,7 +65,10 @@ namespace MateTricks
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
+            app.UseCors(x => x.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .AllowCredentials());    
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseAuthentication();

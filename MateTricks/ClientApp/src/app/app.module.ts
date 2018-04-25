@@ -14,11 +14,11 @@ import { NavComponent } from './nav/nav.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthService } from './Services/auth.service';
-import { UserServiceService } from './Services/user-service.service';
 import { MemberListComponent } from './Member/member/member-list/member-list.component';
 import { MemberCardComponent } from './Member/member-card/member-card.component';
 import { FriendsListComponent } from './friends-list/friends-list.component';
 import { MessagesComponent } from './messages/messages.component';
+import { UserServiceService } from './Services/user-service.service';
 
 export function tokenGetter() {
   return localStorage.getItem('token');

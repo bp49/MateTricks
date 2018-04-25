@@ -8,13 +8,14 @@ import { UserServiceService } from '../../../Services/user-service.service';
 })
 export class MemberListComponent implements OnInit {
 
-  constructor(private UserService: UserServiceService) { }
+  constructor(private UserServiceService: UserServiceService) { }
 
   users = [];
   ngOnInit() {
     this.GetUsers();
   }
   GetUsers() {
-    this.UserService.RetrieveUsers().subscribe(p => this.users = p);
+    this.UserServiceService.RetrieveUsers().subscribe(p => this.users = p, err => console.log(err), () => console.log(this.users));
+    console.log(this.users);
   }
 }

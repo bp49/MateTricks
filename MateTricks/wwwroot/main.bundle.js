@@ -81,7 +81,7 @@ module.exports = ""
 /***/ "./src/app/Member/member/member-list/member-list.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <h1 class=\"text.left\"><strong>Members!</strong></h1>\r\n  <div class=\"row md-3\">\r\n    <div class=\"col-auto\">\r\n      <app-member-card [member]=\"user\"></app-member-card>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <h1 class=\"text.left\"><strong>Members!</strong></h1>\r\n  <div *ngIf=\"users\"class=\"row md-3\">\r\n    <div *ngFor=\"let user of users\"class=\"col-auto\">\r\n      <app-member-card [member]=\"user\"></app-member-card>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -104,8 +104,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MemberListComponent = /** @class */ (function () {
-    function MemberListComponent(UserService) {
-        this.UserService = UserService;
+    function MemberListComponent(UserServiceService) {
+        this.UserServiceService = UserServiceService;
         this.users = [];
     }
     MemberListComponent.prototype.ngOnInit = function () {
@@ -113,7 +113,8 @@ var MemberListComponent = /** @class */ (function () {
     };
     MemberListComponent.prototype.GetUsers = function () {
         var _this = this;
-        this.UserService.RetrieveUsers().subscribe(function (p) { return _this.users = p; });
+        this.UserServiceService.RetrieveUsers().subscribe(function (p) { return _this.users = p; }, function (err) { return console.log(err); }, function () { return console.log(_this.users); });
+        console.log(this.users);
     };
     MemberListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -346,11 +347,11 @@ var AppComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__home_home_component__ = __webpack_require__("./src/app/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__register_register_component__ = __webpack_require__("./src/app/register/register.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__Services_auth_service__ = __webpack_require__("./src/app/Services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Services_user_service_service__ = __webpack_require__("./src/app/Services/user-service.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Member_member_member_list_member_list_component__ = __webpack_require__("./src/app/Member/member/member-list/member-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__Member_member_card_member_card_component__ = __webpack_require__("./src/app/Member/member-card/member-card.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__friends_list_friends_list_component__ = __webpack_require__("./src/app/friends-list/friends-list.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__messages_messages_component__ = __webpack_require__("./src/app/messages/messages.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__Member_member_member_list_member_list_component__ = __webpack_require__("./src/app/Member/member/member-list/member-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__Member_member_card_member_card_component__ = __webpack_require__("./src/app/Member/member-card/member-card.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__friends_list_friends_list_component__ = __webpack_require__("./src/app/friends-list/friends-list.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__messages_messages_component__ = __webpack_require__("./src/app/messages/messages.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__Services_user_service_service__ = __webpack_require__("./src/app/Services/user-service.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -389,10 +390,10 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_10__nav_nav_component__["a" /* NavComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__home_home_component__["a" /* HomeComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__Member_member_member_list_member_list_component__["a" /* MemberListComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__Member_member_card_member_card_component__["a" /* MemberCardComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__friends_list_friends_list_component__["a" /* FriendsListComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__messages_messages_component__["a" /* MessagesComponent */]
+                __WEBPACK_IMPORTED_MODULE_14__Member_member_member_list_member_list_component__["a" /* MemberListComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__Member_member_card_member_card_component__["a" /* MemberCardComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__friends_list_friends_list_component__["a" /* FriendsListComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__messages_messages_component__["a" /* MessagesComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -409,7 +410,7 @@ var AppModule = /** @class */ (function () {
                     }
                 })
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_13__Services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_14__Services_user_service_service__["a" /* UserServiceService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_13__Services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_18__Services_user_service_service__["a" /* UserServiceService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
