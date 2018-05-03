@@ -7,6 +7,13 @@
         <input name="password" class="form-control mr-sm-2" type="password" placeholder="Password" [(ngModel)]="model.password" required/>
         <input name="passwordConfirm" class="form-control mr-sm-2" type="password" placeholder="Confirm Password" [(ngModel)]="PasswordConfirmation.passwordConfirm" required/>
     <alert *ngIf="!PassVerify()" class="alert alert-danger">Passwords Do not Match!</alert>
+    <p class="mb-3 d-inline">Select Gender:
+      <input type="radio" name="gender" value="Male" [(ngModel)]="model.Gender" />Male
+      <input type="radio" name="gender" value="Female" [(ngModel)]="model.Gender" />female
+    </p>
+    <input type="text"class="form-control mr-sm-2" name="Name" [(ngModel)]="model.name" required/>
+    <input type="text" class="form-control mr-sm-2" name="birthDate" placeholder="Birthdate" [(ngModel)]="model.Birthdate" bsDatepicker/>
+    <input type="text" class="form-control mr-sm-2" name="city" placeholder="city" [(ngModel)]="model.city" required />
     <button class="btn btn-primary btn-block" type="submit" [disabled]="!RegisterForm.valid">Register</button>
     <button class="btn btn-danger btn-block" routerLink="/Home">Cancel</button>
     <alert *ngIf="AccountCreation()"class="alert alert-success" [dismissOnTimeout]="5000">You Have successfully registered with the Matrix!</alert>

@@ -10,7 +10,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 })
 export class RegisterComponent implements OnInit {
   //model = {}; Model for submission
-  model = { userName: '', password: '' };
+  model = { userName: '', password: '', Gender: 'Male', Name: '', Birthdate: '', city: '' };
   //Declare the password confirmation model
   PasswordConfirmation = { passwordConfirm: '' }
   AcctSuccess = false;

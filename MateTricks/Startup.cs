@@ -72,7 +72,7 @@ namespace MateTricks
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseAuthentication();
-            //seeder.SeedUsers();
+            seeder.SeedUsers();
 
             app.UseMvc(routes => {
                 routes.MapSpaFallbackRoute(

@@ -12,4 +12,10 @@ export class UserServiceService {
   RetrieveUsers() {
     return this.http.get<Array<UserDTO>>(this.baseUrl + '/users/users');
   }
+  GetUser(id) {
+    return this.http.get<UserDTO>(this.baseUrl + '/users/' + id);
+  }
+  UpdateUser(id, UpdatedUser) {
+    return this.http.put(this.baseUrl + '/users/UpdateUser' + id, UpdatedUser);
+  }
 }

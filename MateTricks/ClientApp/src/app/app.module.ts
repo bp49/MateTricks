@@ -19,6 +19,13 @@ import { MemberCardComponent } from './Member/member-card/member-card.component'
 import { FriendsListComponent } from './friends-list/friends-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserServiceService } from './Services/user-service.service';
+import { MemberDetailsComponent } from './Member/member-details/member-details.component';
+import { TimeAgoPipe } from 'time-ago-pipe';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MemberEditComponent } from './Member/member-edit/member-edit.component';
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload'; 
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -32,7 +39,11 @@ export function tokenGetter() {
     MemberListComponent,
     MemberCardComponent,
     FriendsListComponent,
-    MessagesComponent
+    MessagesComponent,
+    MemberDetailsComponent,
+    TimeAgoPipe,
+    MemberEditComponent,
+    PhotoEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +53,9 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     AlertModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    TabsModule.forRoot(),
+    FileUploadModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

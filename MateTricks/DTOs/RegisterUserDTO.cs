@@ -14,5 +14,16 @@ namespace MateTricks.DTOs
 
         [MinLength(6, ErrorMessage = "{0} must be at least {1} characters long")]
         public string Password { get; set; }
+
+        [Required]
+        public string Gender { get; set; }
+        [Required]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "please enter your birthdate")]
+        public DateTime Birthdate { get; set; }
+
+        [Required]
+        public string City { get; set; }
     }
 }

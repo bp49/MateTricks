@@ -11,6 +11,8 @@ using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using Microsoft.Extensions.Configuration;
+using AutoMapper;
+using MateTricks.Models;
 
 namespace MateTricks.Controllers
 {
@@ -20,10 +22,12 @@ namespace MateTricks.Controllers
     {
         private readonly IAuthRepository _repo;
         private readonly IConfiguration _configuration;
-        public AuthController(IAuthRepository repo, IConfiguration configuration)
+        private readonly IMapper _mapper;
+        public AuthController(IAuthRepository repo, IConfiguration configuration, IMapper mapper)
         {
             _repo = repo;
             _configuration = configuration;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
@@ -43,9 +47,9 @@ namespace MateTricks.Controllers
             }
 
 
-            var newUser = await _repo.Register(user.UserName, user.Password);
+            var newUser = await _repo.Register(_mapper.Map<User>(user), user.Password);
             // Temporary return result for testing
-            return StatusCode(201, new { ID = newUser.ID, UserName = newUser.UserName });
+            return Created("api/auth/register", _mapper.Map<UserDetailedDTO>(newUser));
         }
 
         [HttpPost("login")]

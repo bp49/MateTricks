@@ -11,13 +11,13 @@
           <a class="nav-link" routerLink="/Home">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/members">Members</a>
+          <a class="nav-link" routerLink="/Members">Members</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/friends">Friends List</a>
+          <a class="nav-link" routerLink="/Friends">Friends List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/messages">Messages</a>
+          <a class="nav-link" routerLink="/Messages">Messages</a>
         </li>
       </ul>
       <form *ngIf="VerifyLogin()" #LoginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
@@ -30,7 +30,7 @@
          Welcome User! <span class="caret"></span>
         </button>
         <ul *dropdownMenu class="dropdown-menu" role="menu">
-          <li role="menuitem"><a class="dropdown-item" href="#">Edit profile</a></li>
+          <li role="menuitem"><a class="dropdown-item" routerLink="/member/edit">Edit profile</a></li>
           <li role="menuitem"><a class="dropdown-item" href="#" (click)="logout()">Logout</a></li>
           <li class="divider dropdown-divider"></li>
           <li role="menuitem">

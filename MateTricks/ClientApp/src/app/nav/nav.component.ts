@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
   
   model = {};
   isCollapsed = false;
-  //User = JSON.parse(localStorage.getItem('user')).userName
+  //User = " ";
   
   constructor(public AuthService: AuthService) { }
 
@@ -20,7 +20,8 @@ export class NavComponent implements OnInit {
 
   login() {
     console.log(this.model);
-    this.AuthService.login(this.model).subscribe(data => console.log(data), error =>console.log(error));
+    this.AuthService.login(this.model).subscribe(data => console.log(data), error => console.log(error));
+    //this.User = JSON.parse(localStorage.getItem('user')).userName;
     //console.log(localStorage.getItem('user'));
     //console.log(localStorage.getitem('token'));
     return this.VerifyLogin();

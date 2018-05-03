@@ -24,6 +24,10 @@ namespace MateTricks.Data
                 opt.ResolveUsing(d => d.BirthDate.CalculateAge());
             });
             CreateMap<Photo, PhotosDTO>();
+            CreateMap<RegisterUserDTO, User>();
+            CreateMap<UpdateUserDTO, User>();
+            CreateMap<Photo, PhotoReturnedDTO>();
+            CreateMap<AddPhotoDTO, Photo>();
         }
     }
     }

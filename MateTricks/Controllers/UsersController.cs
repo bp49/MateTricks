@@ -24,6 +24,7 @@ namespace MateTricks.Controllers
             _mapper = mapper;
         }
         [HttpGet("user")]
+        [Route("/api/users/{id}")]
         //[Authorize]
         public async Task<UserDetailedDTO> GetUser(int id)
         {
@@ -38,6 +39,16 @@ namespace MateTricks.Controllers
             var Users = await _repo.GetUsers();
             var userBriefDetails = _mapper.Map<IEnumerable<UserBriefDTO>>(Users);
             return userBriefDetails;
+        }
+        [HttpPut]
+        [Route("/api/users/updateuser/{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserDTO updatedUser)
+        {
+            var user = await _repo.GetUser(id);
+            user = _mapper.Map(updatedUser, user);
+            await _repo.SaveAll();
+            return NoContent();
+
         }
     }
 }

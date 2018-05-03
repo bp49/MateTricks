@@ -1,0 +1,41 @@
+<form UpdateForm="ngForm" ngSubmit="updateUser()">
+<div class="row">
+  <div class="card col-s-6">
+    <img *ngIf="member.photoUrl != null" class="profile-picture" src="{{member.photoUrl}}" />
+    <img *ngIf="member.photoUrl ==null" class="card-img-top" src="../../../assets/Default.jpg" />
+    <dl class="mt-4 ml-3 text-left">
+      <dt>Location</dt>
+      <dd>{{member.city}}</dd>
+      <dt>Age</dt>
+      <dd>{{member.age}}</dd>
+      <dt>Last Active</dt>
+      <dd>{{member.lastActive | timeAgo}}</dd>
+      <dt>Member Since</dt>
+      <dd>{{member.created | date}}</dd>
+    </dl>
+    <button class="btn btn-primary" type="submit">Save Changes</button>
+  </div>
+  <div class="col-9">
+    <tabset [justified]="true">
+      <tab heading="Edit Profile" id="tab1" class="text-left">
+        <h2><strong>Description</strong></h2>
+        <textarea name="Introduction" [(ngModel)]="member.introduction">{{member.introduction}}</textarea>
+        <h2><strong>Looking For</strong></h2>
+        <textarea name="Lookingfor" [(ngModel)]="member.lookingfor">{{member.lookingFor}}</textarea>
+        <h2><strong>Your Interests</strong></h2>
+        <textarea name="Interests" [(ngModel)]="member.interests">{{member.interests}}</textarea>
+        <h2><strong>City</strong></h2>
+        <input type="text" name="City" placeholder="{{member.city}}" [(ngModel)]="member.city">
+      </tab>
+      <tab heading="Edit Photos" class="text-left" id="tab3">
+        <app-photo-editor [photos=user.photos]></app-photo-editor>
+        <div class="row">
+          <div class="mt-3" *ngFor="let photo of member.photos">
+            <img class="w3-round col-auto" src="{{photo.url}}">
+            </div>
+          </div>
+      </tab>
+    </tabset>
+  </div>
+</div>
+  </form>
